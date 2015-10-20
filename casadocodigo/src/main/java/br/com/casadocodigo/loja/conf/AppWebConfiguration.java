@@ -81,7 +81,7 @@ public class AppWebConfiguration {
 		//Guava como Provedor de Cache
 		CacheBuilder<Object, Object> builder =
 				CacheBuilder.newBuilder()
-				.maximumSize(10)
+				.maximumSize(10)//minutos
 				.expireAfterAccess(1, TimeUnit.MINUTES);
 		
 		GuavaCacheManager cacheManager = new GuavaCacheManager();
