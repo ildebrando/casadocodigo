@@ -66,6 +66,7 @@ public class ProductsController {
 	}
 
 	@RequestMapping(method = RequestMethod.POST)
+//	@ RequestMapping(method = RequestMethod.POST, value = "/save")
 	@Transactional
 	@CacheEvict(value = "lastProdutcs", allEntries = true)
 	public ModelAndView save(@Valid Product product, 

@@ -12,7 +12,7 @@
 </head>
 
 <body>
-	<c:url value="/products" var="url"/>
+	<c:url value="/products/save" var="url"/>
 	<!--form:form action="${spring:mvcUrl('PC#save').build()}" method="post" commandName="product"-->
 	<form:form action="${url}" method="post" commandName="product" enctype="multipart/form-data">
 		<div>
