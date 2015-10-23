@@ -9,7 +9,7 @@ import org.springframework.security.core.GrantedAuthority;
 public class Role implements GrantedAuthority {
 
 	private static final long serialVersionUID = 1L;
-	private static final String roleConcat = "ROLE_";
+	private static final String rolePrefix = "ROLE_";
 
 	@Id
 	private String name;
@@ -21,7 +21,7 @@ public class Role implements GrantedAuthority {
 	}
 
 	public String getName() {
-		return roleConcat + name;
+		return rolePrefix + name;
 	}
 
 	public void setName(String name) {

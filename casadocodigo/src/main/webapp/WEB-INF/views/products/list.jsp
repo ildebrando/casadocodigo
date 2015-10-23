@@ -1,20 +1,27 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
-<!DOCTYPE html>
-<html>
-<head>
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	<title>Listagem de livros</title>
-</head>
+<%@taglib uri="http://www.springframework.org/security/tags" prefix="sec"%>
+<%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
+<%@taglib tagdir="/WEB-INF/tags" prefix="cdc"%>
 
-<body>
+<cdc:page title="Listagem de livros">
+
+<jsp:body>
+
+	<sec:authorize access='hasRole("ROLE_ADMIN")'>
+		<c:url value="/products/form" var="formLink"/>
+		<a href="${formLink}"><spring:message code="addNewProduct"/></a>
+	</sec:authorize>
+	
+	<br/><br/>
 	<h2>${sucesso}</h2>
 	<br/>
 	<table>
 		<tr>
-			<th>Título</th>
-			<th>Valores</th>
-			<th>Detalhes</th>
+			<th><spring:message code="list.title"/></th>
+			<th><spring:message code="list.value"/></th>
+			<th><spring:message code="list.detail"/></th>
 		</tr>
 		<c:forEach items="${products}" var="product">
 			<tr>
@@ -31,12 +38,7 @@
 			</tr>
 		</c:forEach>
 	</table>
-	<div>
-		<br/>
-		<c:url value="/products/form" var="url"/>
-		<form action="${url}" method="post">
-			<input type="submit" value="Inserir" />
-		</form>
-	</div>
-</body>
-</html>
+
+</jsp:body>
+
+</cdc:page>
