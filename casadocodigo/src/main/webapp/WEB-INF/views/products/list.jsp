@@ -5,7 +5,8 @@
 <%@taglib uri="http://www.springframework.org/security/tags" prefix="sec"%>
 <%@taglib tagdir="/WEB-INF/tags" prefix="cdc"%>
 
-<cdc:page title="<fmt:message key='products.list.pageTitle'/>">
+
+<cdc:page title="products.list.pageTitle">
 
 <jsp:body>
 
