@@ -1,11 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@taglib uri="http://www.springframework.org/security/tags" prefix="sec"%>
-<%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@taglib tagdir="/WEB-INF/tags" prefix="cdc"%>
 
-<cdc:page title="Cadastro de Livros">
+<cdc:page title="<fmt:message key='products.form.pageTitle'/>">
 
 <jsp:attribute name="extraImports">
 	<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
@@ -22,37 +22,36 @@
 <jsp:body>
 
 	<c:url value="/products" var="listLink"/>
-	<a href="${listLink}">Voltar</a>
+	<a href="${listLink}"><fmt:message key="products.form.back"/></a>
 		
 	<c:url value="/products/save" var="url"/>
-	<!--form:form action="${spring:mvcUrl('PC#save').build()}" method="post" commandName="product"-->
 	<form:form action="${url}" method="post" commandName="product" enctype="multipart/form-data">
 		<div>
 			<p>${msgErro}</p>
 			<br/>
 		</div>
 		<div>
-			<label for="title">Título</label>
+			<label for="title"><fmt:message key="products.form.title"/></label>
 			<form:input id="title" path="title"/>
 			<form:errors path="title"/>
 		</div>
 		<div>
-			<label for="description">Descrição</label>
+			<label for="description"><fmt:message key="products.form.description"/></label>
 			<form:textarea id="description" rows="4" cols="70" path="description"/>
 			<form:errors path="description"/>
 		</div>
 		<div>
-			<label for="numberOfPages">Número de Páginas</label>
+			<label for="numberOfPages"><fmt:message key="products.form.pages"/></label>
 			<form:input id="numberOfPages" path="numberOfPages"/>
 			<form:errors path="numberOfPages"/>
 		</div>
 		<div>
-			<label for="releaseDate">Data</label>
+			<label for="releaseDate"><fmt:message key="products.form.date"/></label>
 			<form:input path="releaseDate" id="releaseDate" type="text"/>
 			<form:errors path="releaseDate"/>
 		</div>
 		<div>
-			<label for="summary">Sumário do Livro</label>
+			<label for="summary"><fmt:message key="products.form.summary"/></label>
 			<!--form:input path="summary" id="summary" type="file"/>-->
 			<input type="file" name="summary" id="summary"/>
 			<form:errors path="summaryPath"/>
@@ -69,7 +68,7 @@
 		</div>
 		<div>
 			<br/>
-			<input type="submit" value="Gravar"/>
+			<input type="submit" value='<fmt:message key="products.form.submit"/>'/>
 		</div>
 	</form:form>
 

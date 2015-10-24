@@ -4,6 +4,9 @@ import java.math.BigDecimal;
 import java.util.concurrent.Callable;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -61,8 +64,14 @@ public class ShoppingCartController {
 				String response = null;
 				
 				try {
-					response = restTemplate.postForObject(uri, 
-							new PaymentData(total), String.class);
+					HttpHeaders headers = new HttpHeaders();
+					headers.setContentType(MediaType.APPLICATION_JSON);
+					HttpEntity<PaymentData> request = new HttpEntity<>(new PaymentData(total), headers);
+					
+//					response = restTemplate.postForObject(uri, 
+//							new PaymentData(total), String.class);
+					
+					response = restTemplate.postForObject(uri, request, String.class);
 					System.out.println(response);
 					
 					ModelAndView mv = new ModelAndView("redirect:/products");
